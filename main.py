@@ -18,3 +18,5 @@ def another_page():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+git remote https://github.com/sakaichihiro1209/-.git origin git@github.com:sakaichihiro1209/-.git
