@@ -1,18 +1,16 @@
 from flask import Flask, render_template, make_response, request
-import json
 import datetime
- 
-class cookie_service:
-    group=""
-    def get_group(self):
-        group_cookie=request.cookie.get("group")
-        if group_cookie is not None:
-            group_json = json.loads(group_cookie)
-            self.group=group_json.group
-        return self.group
+import json
+class cookie:
     def set_group(self,group):
-        expires = int(datetime.datetime.now().timestamp()) +30
+        max_age = 30
+        expires = int(datetime.datetime.now().timestamp()) + max_age
         response = make_response(render_template("cookie.html"))
         user_info = {'group':group} 
-        response.set_cookie("groupname", value=json.dumps(user_info), expires=expires)
+        response.set_cookie("group_name", value=json.dumps(user_info), expires=expires)
         return response
+    def get_group(self):
+        user_info = request.cookies.get('group_name')
+        if user_info is not None:
+            group_name = json.loads(user_info)
+        return group_name['group']
