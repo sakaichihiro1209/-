@@ -8,7 +8,7 @@ def index():
     get_cookie=cookie_service()
     group=get_cookie.get_cookie()
     
-    title = 'demo'
+    title = 'deme'
     return render_template('index.html', title=title)
 
 
