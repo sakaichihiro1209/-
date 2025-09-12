@@ -5,7 +5,7 @@
         <input type="submit" value="cookieを設定" formaction="/resp">
         <input type="submit" value="更新" formaction="/view">
     </form>
-    {% if group_name == None %}
+    {% if group_name == 0 %}
         <p>cookieが設定されていません。</p>
     {% else %}
         <p>id:{{group_name}}</p>

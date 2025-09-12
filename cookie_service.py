@@ -13,4 +13,8 @@ class cookie:
         user_info = request.cookies.get('group_name')
         if user_info is not None:
             group_name = json.loads(user_info)
-        return group_name['group']
+            return group_name['group']
+        else:
+            return 0
+        
+        
