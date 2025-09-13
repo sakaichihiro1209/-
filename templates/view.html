@@ -2,13 +2,13 @@
 <html lang="ja">
 <body>
     <form>
-        <input type="submit" value="cookieを設定" formaction="/resp">
-        <input type="submit" value="更新" formaction="/view">
+        <input type="submit" value="班を登録する" formaction="/resp">
     </form>
-    {% if group_name == 0 %}
-        <p>cookieが設定されていません。</p>
-    {% else %}
-        <p>id:{{group_name}}</p>
-    {% endif %}
+        <p>今週の診療科:{{now}}</p><br>
+        <a href={{nowlink}}>教育要項を見る</a>
+        <p>次の診療科:{{next}}</p>
+        <a href={{nextlink}}>教育要項を見る</a>
+        <p>その開始日:{{day}}</p>
+
 </body>
 </html>
