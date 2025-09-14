@@ -37,7 +37,7 @@ def view():
         image6 = 'static_data/'+'{0:04}'.format(next_page+2) +'.jpg'
 
         
-        return render_template('view.html', now = dbservice.now_depertment,next=dbservice.next_depertment,day=str(dbservice.first_day).replace(" 00:00:00",""),image1=image1,image2=image2,image3=image3,image4=image4,image5=image5,image6=image6)
+        return render_template('view.html', now = dbservice.now_depertment,next=dbservice.next_depertment,day=str(dbservice.first_day).replace(" 00:00:00",""),image1=image1,image2=image2,image3=image3,image4=image4,image5=image5,image6=image6,now_drive=dbservice.now_drive,next_drive=dbservice.next_drive)
 
 
 

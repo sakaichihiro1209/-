@@ -48,6 +48,10 @@ class DBservice:
                 self.first_day=datetime.strptime(row[1],'%Y-%m-%d')
             else:
                 print(row[1])
+
+        self.now_drive=self.infra.depertment_table(self.now_depertment)[2]
+        self.next_drive=self.infra.depertment_table(self.next_depertment)[2]
+
     def get_page(self,depertment):
         depertment_data=self.infra.depertment_table(depertment)
         return depertment_data[1]

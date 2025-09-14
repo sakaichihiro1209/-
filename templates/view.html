@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <link rel="icon" type="favicon.png" href="static_data/webicon.png">
         <style>
             img{width:95% ;max-width: 1000px;}
             p{font-size: xx-large;}
@@ -12,7 +13,9 @@
         <input type="submit" value="班を登録する" formaction="/resp" style="width: 500px;height: 100px;font-size: xx-large;">
     </form>
         <p>今週の診療科:{{now}}</p>
+        <a href={{now_drive}} target="_blank" rel="noopener noreferrer">{{now}}科の過去情報(GoogleDrive)</a>
         <p>次の診療科:{{next}}</p>
+        <a href={{next_drive}} target="_blank" rel="noopener noreferrer">{{next}}科の過去情報(GoogleDrive)</a>
         <p>その開始日:{{day}}</p>
 
         <img src={{image1}}> 
