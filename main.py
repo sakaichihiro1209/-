@@ -3,7 +3,7 @@ import json
 from cookie_service import cookie
 import sqlite3
 from DBservice import DBservice
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./templates/static_data')
 
 @app.route('/resp')
 def resp():
@@ -23,21 +23,23 @@ def view():
     cookie_service=cookie()
     group_name = cookie_service.get_group()
     if group_name==0:
-        
-        nowlink="http://www.kms.ac.jp/files/1517/3528/3269/igaku1_2025.pdf"
-        nextlink="http://www.kms.ac.jp/files/1517/3528/3269/igaku1_2025.pdf"
-        return render_template('view.html', now = "班を登録してください",next="班を登録してください",day="班を登録してください",nowlink=nowlink,nextlink=nextlink)
+        return render_template('view.html', now = "班を登録してください",next="班を登録してください",day="班を登録してください")
     else:
         
         dbservice.get_topview(group_name)
-        nowpage=dbservice.get_page(dbservice.now_depertment)
-        nowpdfpage=int(nowpage)+7
-        nextpage=dbservice.get_page(dbservice.next_depertment)
-        nextpdfpage=int(nextpage)+7
-        nowlink="http://www.kms.ac.jp/files/1517/3528/3269/igaku1_2025.pdf#toolbar=0&view=Fit&page="+str(nowpdfpage)+""
-        nextlink="http://www.kms.ac.jp/files/1517/3528/3269/igaku1_2025.pdf#toolbar=0&view=Fit&page="+str(nextpdfpage)+""
-        
-        return render_template('view.html', now = dbservice.now_depertment,next=dbservice.next_depertment,day=dbservice.first_day,nowlink=nowlink,nextlink=nextlink)
+        page=int(dbservice.get_page(dbservice.now_depertment))+5
+        image1 = 'static_data/'+'{0:04}'.format(page) +'.jpg'
+        image2 = 'static_data/'+'{0:04}'.format(page+1) +'.jpg'
+        image3 = 'static_data/'+'{0:04}'.format(page+2) +'.jpg'
+        next_page=int(dbservice.get_page(dbservice.next_depertment))+5
+        image4 = 'static_data/'+'{0:04}'.format(next_page) +'.jpg'
+        image5 = 'static_data/'+'{0:04}'.format(next_page+1) +'.jpg'
+        image6 = 'static_data/'+'{0:04}'.format(next_page+2) +'.jpg'
 
-    
+        
+        return render_template('view.html', now = dbservice.now_depertment,next=dbservice.next_depertment,day=str(dbservice.first_day).replace(" 00:00:00",""),image1=image1,image2=image2,image3=image3,image4=image4,image5=image5,image6=image6)
+
+
+
+
 app.run(debug=True)
